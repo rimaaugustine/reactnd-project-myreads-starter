@@ -8,10 +8,16 @@ export default class BookShelf extends Component {
         { category: 'wantToRead', title: 'Want to Read' },
         { category: 'read', title: 'Read' }
       ];
+     
     return (
         <div>
         {categoriesShelf.map((category, i) => {
-             const bookFilteredCategory = this.props.books.filter(book => book.shelf === category.category);
+            let bookFilteredCategory
+            if(this.props.pathname === "/"){
+             bookFilteredCategory = this.props.books.filter(book => book.shelf === category.category);
+            }else{
+             bookFilteredCategory= this.props.books
+            }
              return(
                 <div className="bookshelf" key={i}>
                 <h2 className="bookshelf-title">{category.title}</h2>

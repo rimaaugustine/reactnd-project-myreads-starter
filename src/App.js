@@ -1,7 +1,7 @@
 import React from "react";
 import *  as BooksAPI from './BooksAPI'
 import "./App.css";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, withRouter } from "react-router-dom";
 import Search from "./components/search";
 import BookShelf from "./components/bookShelf"
 
@@ -30,7 +30,7 @@ updateShelf = (book, shelf) => {
 }
 
   render() {
-    console.log(this.state.books)
+    console.log(this.props.location.pathname)
     return (
       <div className="app">
         <Route
@@ -45,6 +45,7 @@ updateShelf = (book, shelf) => {
                 <div>
                 <BookShelf books={this.state.books} 
                 onUpdateShelf={this.updateShelf} 
+                pathname={this.props.location.pathname} 
                />
                 </div>
                 
@@ -59,10 +60,10 @@ updateShelf = (book, shelf) => {
           }
         />
         {/* add the event click */}
-        <Route exact path="/search" render={()=> <Search />} />
+        <Route exact path="/search" render={()=> <Search pathname={this.props.location.pathname} />} />
       </div>
     );
   }
 }
 
-export default BooksApp;
+export default withRouter(BooksApp);

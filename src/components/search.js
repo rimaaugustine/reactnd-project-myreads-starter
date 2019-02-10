@@ -25,7 +25,7 @@ updateQuery = (query) => {
  
   render() {
       const { query, arrBooks, error} = this.state
-  
+    console.log(arrBooks)
     return (
         <div> 
             <div className="search-books">
@@ -57,7 +57,7 @@ updateQuery = (query) => {
             (   
                 <div>
                 <h3>found {arrBooks.length} books </h3>
-                <BookShelf books={arrBooks} buttonActive={"none"}/>
+                <BookShelf books={arrBooks} />
                 </div>
             )}
              {error && (
