@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
+import BookShelf from '../components/bookShelf';
+
 class Search extends Component {
+
   render() {
+
     return (
+        <div>
             <div className="search-books">
               <div className="search-books-bar">
                 <Link to="/">
@@ -25,7 +30,8 @@ class Search extends Component {
                 <ol className="books-grid"></ol>
               </div>
             </div>
-
+          <BookShelf books={this.props.books}/>
+          </div>         
     )
   }
 }
