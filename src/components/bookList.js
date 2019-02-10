@@ -19,7 +19,7 @@ export default class BookList extends Component {
                                   `url(${book.imageLinks.thumbnail})`
                               }}
                             />
-                            <ButtonChanger />
+                            <ButtonChanger onUpdateChange={this.props.onUpdateChange} id={book.id}/>
                           </div>
                           <div className="book-title">
                             {book.title}

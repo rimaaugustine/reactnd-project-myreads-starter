@@ -60,7 +60,8 @@ updateShelf = (book, shelf) => {
           }
         />
         {/* add the event click */}
-        <Route exact path="/search" render={()=> <Search pathname={this.props.location.pathname} />} />
+        <Route exact path="/search" render={()=> 
+        <Search pathname={this.props.location.pathname} onUpdateShelf={this.updateShelf}  />} />
       </div>
     );
   }
