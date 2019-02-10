@@ -66,10 +66,6 @@ class BooksApp extends React.Component {
    })
  }  
 
-//  getCategory = () => {
-//    const booksCollection = this.state.booksCollection.filter()
-//    switch (booksCol)
-//  }
 
   render() {
     console.log(this.state.books)
@@ -85,13 +81,13 @@ class BooksApp extends React.Component {
               </div>
               <div className="list-books-content">
                 <div>
-                <BookShelf books={this.state.currentlyRead} catergoryTitle="Currently Read" />
+                <BookShelf books={this.state.currentlyRead} catergoryTitle="Currently Read" buttonActive={"currentlyReading"} />
                 </div>
                 <div>
-                <BookShelf books={this.state.wantToRead} catergoryTitle="Want To Read" />
+                <BookShelf books={this.state.wantToRead} catergoryTitle="Want To Read" buttonActive={"wantToRead"}/>
                 </div>
                 <div>
-                <BookShelf books={this.state.read} catergoryTitle="Read" />
+                <BookShelf books={this.state.read} catergoryTitle="Read" buttonActive={"read"}/>
                 </div>
               </div>
               <div className="open-search">

@@ -1,13 +1,13 @@
 import React from 'react'
 
-export default function ButtonChanger() {
+export default function ButtonChanger(props) {
   return (
     <div className="book-shelf-changer">
-    <select>
+    <select value={props.buttonActive} >
       <option value="move" disabled>
         Move to...
       </option>
-      <option value="currentlyReading">
+      <option value="currentlyReading" >
         Currently Reading
       </option>
       <option value="wantToRead">

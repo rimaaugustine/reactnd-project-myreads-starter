@@ -47,7 +47,7 @@ updateQuery = (query) => {
               </div>
             </div>
           
-          <BookShelf books={showingBooks}/>
+          <BookShelf books={showingBooks} buttonActive={"none"}/>
           </div>         
     )
   }

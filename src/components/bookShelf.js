@@ -22,7 +22,7 @@ export default class BookShelf extends Component {
                           `url(${book.imageLinks.thumbnail})`
                       }}
                     />
-                    <ButtonChanger/>
+                    <ButtonChanger buttonActive={this.props.buttonActive}/>
                   </div>
                   <div className="book-title">
                     {book.title}
