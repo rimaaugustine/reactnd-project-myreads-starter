@@ -1,13 +1,29 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import BookShelf from '../components/bookShelf';
-
+import *  as BooksAPI from '../BooksAPI'
 class Search extends Component {
+ state = {
+     query: ''
+ } 
 
+updateQuery = (query) => {
+    this.setState(() => ({
+       query: query.trim()
+    }))
+}
+ 
   render() {
+      const { query} = this.state
+      const { books} = this.props
 
+      const showingBooks = query === "" 
+      ? books 
+      : books.filter((b) => (
+          b.title.toLowerCase().includes(query.toLowerCase())
+      ))
     return (
-        <div>
+        <div> 
             <div className="search-books">
               <div className="search-books-bar">
                 <Link to="/">
@@ -22,7 +38,7 @@ class Search extends Component {
                     However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                     you don't find a specific author or title. Every search is limited by search terms.
                   */}
-                  <input type="text" placeholder="Search by title or author"/>
+                  <input type="text" placeholder="Search by title or author" value={query} onChange={(event) => this.updateQuery(event.target.value) }/>
   
                 </div>
               </div>
@@ -30,7 +46,8 @@ class Search extends Component {
                 <ol className="books-grid"></ol>
               </div>
             </div>
-          <BookShelf books={this.props.books}/>
+          
+          <BookShelf books={showingBooks}/>
           </div>         
     )
   }
