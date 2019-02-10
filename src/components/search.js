@@ -4,24 +4,28 @@ import BookShelf from '../components/bookShelf';
 import *  as BooksAPI from '../BooksAPI'
 class Search extends Component {
  state = {
-     query: ''
+     query: '',
+     arrBooks: [],
+     error: false
  } 
 
 updateQuery = (query) => {
     this.setState(() => ({
-       query: query.trim()
+       query: query.trim(), 
     }))
+        if (query) {
+            BooksAPI.search(query.trim(), 20).then(books => {
+              books.length > 0
+                ? this.setState({ arrBooks: books, error: false })
+                : this.setState({ arrBooks: [], error: true });
+            });
+      
+          } else this.setState({ newBooks: [], searchErr: false });
 }
  
   render() {
-      const { query} = this.state
-      const { books} = this.props
-
-      const showingBooks = query === "" 
-      ? books 
-      : books.filter((b) => (
-          b.title.toLowerCase().includes(query.toLowerCase())
-      ))
+      const { query, arrBooks, error} = this.state
+  
     return (
         <div> 
             <div className="search-books">
@@ -38,7 +42,10 @@ updateQuery = (query) => {
                     However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                     you don't find a specific author or title. Every search is limited by search terms.
                   */}
-                  <input type="text" placeholder="Search by title or author" value={query} onChange={(event) => this.updateQuery(event.target.value) }/>
+                  <input type="text" 
+                  placeholder="Search by title or author" 
+                  value={query} 
+                  onChange={(event) => this.updateQuery(event.target.value) }/>
   
                 </div>
               </div>
@@ -46,8 +53,17 @@ updateQuery = (query) => {
                 <ol className="books-grid"></ol>
               </div>
             </div>
-          
-          <BookShelf books={showingBooks} buttonActive={"none"}/>
+            {arrBooks.length > 0  && 
+            (   
+                <div>
+                <h3>found {arrBooks.length} books </h3>
+                <BookShelf books={arrBooks} buttonActive={"none"}/>
+                </div>
+            )}
+             {error && (
+            <h3>No result have been found</h3>
+          )}
+         
           </div>         
     )
   }

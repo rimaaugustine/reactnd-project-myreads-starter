@@ -1,38 +1,28 @@
 import React, { Component } from 'react'
-import ButtonChanger from "./buttonChanger";
-
+import BookList from "./bookList"
 export default class BookShelf extends Component {
    
   render() {
+    const categoriesShelf = [
+        { category: 'currentlyReading', title: 'Currently Reading' },
+        { category: 'wantToRead', title: 'Want to Read' },
+        { category: 'read', title: 'Read' }
+      ];
     return (
-        <div className="bookshelf">
-        <h2 className="bookshelf-title">{this.props.catergoryTitle}</h2>
-        <div className="bookshelf-books">
-          <ol className="books-grid">
-          {this.props.books.map((book, id) => (
-                <li key={id}>
-                <div className="book">
-                  <div className="book-top">
-                    <div
-                      className="book-cover"
-                      style={{
-                        width: 128,
-                        height: 193,
-                        backgroundImage:
-                          `url(${book.imageLinks.thumbnail})`
-                      }}
-                    />
-                    <ButtonChanger buttonActive={this.props.buttonActive}/>
-                  </div>
-                  <div className="book-title">
-                    {book.title}
-                  </div>
-                  <div className="book-authors">{book.authors}</div>
+        <div>
+        {categoriesShelf.map((category, i) => {
+             const bookFilteredCategory = this.props.books.filter(book => book.shelf === category.category);
+             return(
+                <div className="bookshelf" key={i}>
+                <h2 className="bookshelf-title">{category.title}</h2>
+                <div className="bookshelf-books">
+                 <BookList books={bookFilteredCategory} />
                 </div>
-              </li>    
-          ))}       
-          </ol>
-        </div>
+              </div>
+             )
+        } )}
+        
+       
       </div>
     )
   }
