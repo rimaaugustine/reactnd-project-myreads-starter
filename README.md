@@ -2,7 +2,7 @@
 
 ## Introduction
 
-> A simple app for listing the books and putting into categories, such as "current reading", "want to read" or "already read books". This app is built on React JS and React Router. Furthermore, the project was bootstrapped using boilerplate Create React App. This project is intended as the programming assignment for the Udacity React Nanodegree program. You can find the original template of the assignment in this link.
+> A simple app for listing the books and putting into categories, such as "current reading", "want to read" or "already read books". This app is built on React JS and React Router. Furthermore, the project was bootstrapped using boilerplate [Create React App](https://github.com/facebook/create-react-app). This project is intended as the programming assignment for the [Udacity React Nanodegree program](https://eu.udacity.com/course/react-nanodegree--nd019). You can find the original template of the assignment in this [link](https://github.com/udacity/reactnd-project-myreads-starter).
 
 ## API 
 
