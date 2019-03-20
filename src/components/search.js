@@ -9,6 +9,7 @@ class Search extends Component {
     searchErr: false
   };
 
+  //for query search
   updateQuery = query => {
     this.setState(() => ({
       query: query.trim()

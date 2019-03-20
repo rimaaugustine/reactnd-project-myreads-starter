@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 
-export default class ButtonChanger extends Component {
 
+export default class ButtonChanger extends Component {
+//take the argument of book and the event target(contains categories)
   onUpdateShelf = e => {
     console.log(this.props.book, e.target.value)
     this.props.onUpdateShelf(this.props.book, e.target.value)

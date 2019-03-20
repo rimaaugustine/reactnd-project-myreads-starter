@@ -14,10 +14,11 @@ export default class BookShelf extends Component {
      
     return (
         <div>
+          {/* check the url and give different display (homepage / search) */}
          { this.props.pathname === "/" ? <div>
             {categoriesShelf.map((category, i) => {
+            //after map 3 categories, filter book based on the category
              const bookFilteredCategory = this.props.books.filter(book => book.shelf === category.category);
-           
              return(
                 <div className="bookshelf" key={i}>
                 <h2 className="bookshelf-title">{category.title}</h2>

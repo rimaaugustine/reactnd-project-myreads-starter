@@ -11,6 +11,7 @@ class BooksApp extends React.Component {
   };
 
   componentDidMount(){
+  //display all the books for the homepage
    BooksAPI.getAll()
    .then((books)=> {
      this.setState(()=>({
@@ -19,6 +20,7 @@ class BooksApp extends React.Component {
    })
  }  
  
+//update the shelf based on the categories book
 updateShelf = (book, shelf) => {
   BooksAPI.update(book, shelf ).then(response => {
     book.shelf = shelf;
@@ -29,7 +31,7 @@ updateShelf = (book, shelf) => {
 }
 
   render() {
-    console.log(this.props.location.pathname)
+    // console.log(this.props.location.pathname)
     return (
       <div className="app">
       <Switch>
