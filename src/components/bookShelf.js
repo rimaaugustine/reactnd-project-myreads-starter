@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import BookList from "./bookList"
+
+
 export default class BookShelf extends Component {
    
   render() {
@@ -20,14 +22,14 @@ export default class BookShelf extends Component {
                 <div className="bookshelf" key={i}>
                 <h2 className="bookshelf-title">{category.title}</h2>
                 <div className="bookshelf-books">
-                 <BookList books={bookFilteredCategory} onUpdateChange={this.props.onUpdateChange} />
+                 <BookList books={bookFilteredCategory} onUpdateShelf={this.props.onUpdateShelf} />
                 </div>
               </div>
              )
         } )}
         </div> :
          <div className="bookshelf-books">
-            <BookList books={this.props.books} onUpdateChange={this.props.onUpdateChange} />
+            <BookList books={this.props.books} onUpdateShelf={this.props.onUpdateShelf} />
         </div>
         }
        

@@ -1,15 +1,14 @@
 import React from "react";
 import *  as BooksAPI from './BooksAPI'
 import "./App.css";
-import { Link, Route, withRouter } from "react-router-dom";
+import { Link, Route, withRouter, Switch } from "react-router-dom";
 import Search from "./components/search";
 import BookShelf from "./components/bookShelf"
-
+import NotFound from "./components/notFound"
 class BooksApp extends React.Component {
   state = {
     books:[]
   };
-
 
   componentDidMount(){
    BooksAPI.getAll()
@@ -19,7 +18,7 @@ class BooksApp extends React.Component {
      }))
    })
  }  
-
+ 
 updateShelf = (book, shelf) => {
   BooksAPI.update(book, shelf ).then(response => {
     book.shelf = shelf;
@@ -33,6 +32,7 @@ updateShelf = (book, shelf) => {
     console.log(this.props.location.pathname)
     return (
       <div className="app">
+      <Switch>
         <Route
           exact
           path="/"
@@ -62,6 +62,8 @@ updateShelf = (book, shelf) => {
         {/* add the event click */}
         <Route exact path="/search" render={()=> 
         <Search pathname={this.props.location.pathname} onUpdateShelf={this.updateShelf}  />} />
+        <Route component={NotFound} />
+        </Switch>
       </div>
     );
   }
